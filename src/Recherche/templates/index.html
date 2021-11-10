@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,8 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche Boyer</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h1>Recherche Boyer</h1>
+    <h1>Recherche Boyer-Moore-Horspool</h1>
+    <form method="post">{% csrf_token %}
+        <textarea name="texte" id="" cols="30" rows="6"></textarea>
+        <input type="text" name="motif">
+        <button type="submit">Rechercher</button>
+    </form>
 </body>
 </html>
