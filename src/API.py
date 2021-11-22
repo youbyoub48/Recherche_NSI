@@ -1,10 +1,7 @@
 # Code Boyer-Moore-Horspool
 
 def tableau_sauts(motif):
-    tds={}
-    for i in range(len(motif)-2,-1,-1):
-        tds[motif[i]]=len(motif)-1-i
-    return tds
+    return {motif[i]: len(motif)-1-i for i in range(len(motif)-2,-1,-1)}
         
 
 
@@ -27,14 +24,15 @@ def boyer_moore_horspool(texte, motif,tDs):
                     trouve=False
                     break
             if (trouve):
-                positions.append(i+1)
+                positions.append(i)
                 i += 1
                 trouve=False
-    return positions
+    return positions[0]
 
 if __name__ == "__main__" :
     texte = "ayoubbilaladam"
     motif = "bilal"
     tDs=tableau_sauts(motif)
     azetr = boyer_moore_horspool(texte, motif, tDs)
+    print(azetr)
     

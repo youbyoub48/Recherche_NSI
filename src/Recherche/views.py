@@ -13,5 +13,8 @@ def index(request):
         texte = request.POST.get("texte")
         tDs = tableau_sauts(motif)
         position = boyer_moore_horspool(texte, motif, tDs)
-        print(position)
-        return render(request, "index.html")
+        fin = position+len(motif)
+        texte_gauche = texte[0:position]
+        texte_millieu = texte[position:fin]
+        texte_droit = texte[fin:]
+        return render(request, "index.html", context={"texte_gauche": texte_gauche, "texte_millieu": texte_millieu, "texte_droit": texte_droit, "motif": motif, "position": position})
