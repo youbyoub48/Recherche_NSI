@@ -6,15 +6,23 @@ from API import tableau_sauts, boyer_moore_horspool
 
 def index(request):
     if request.method == "GET":
-        return render(request, "index.html")
-    
+        resultat = False
+        erreur = False
+        return render(request, "index.html", context={"resultat": resultat, "erreur": erreur})
+
     elif request.method == "POST":
         motif = request.POST.get("motif")
         texte = request.POST.get("texte")
         tDs = tableau_sauts(motif)
         position = boyer_moore_horspool(texte, motif, tDs)
+        if position == "False" :
+            resultat = True
+            erreur = True
+            return render(request, "index.html", context={"resultat": resultat, "erreur": erreur, "motif": motif})
         fin = position+len(motif)
-        texte_gauche = texte[0:position]
+        texte_gauche = texte[:position]
         texte_millieu = texte[position:fin]
         texte_droit = texte[fin:]
-        return render(request, "index.html", context={"texte_gauche": texte_gauche, "texte_millieu": texte_millieu, "texte_droit": texte_droit, "motif": motif, "position": position})
+        resultat = True
+        erreur = False
+        return render(request, "index.html", context={"texte_gauche": texte_gauche, "texte_millieu": texte_millieu, "texte_droit": texte_droit, "motif": motif, "position": position, "resultat": resultat, "erreur": erreur})

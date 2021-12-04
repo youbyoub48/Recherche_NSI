@@ -14,7 +14,7 @@
         <h1>Recherche Boyer-Moore-Horspool</h1>
     </header>
 
-    <div class="rectangle">
+    <div class="{% if resultat %}rectangle{% else %}rectangle_get{% endif %}">
 
         <div class="formulaire">
             <form method="post">{% csrf_token %}
@@ -24,12 +24,14 @@
             </form>
         </div>
 
+        {% if resultat %}
         <div class="resultat">
             <h2>Mot Rechercher:</h2>
             <p>{{ motif }}</p>
-            <h2>Texte:</h2>
-            <p>{{ texte_gauche }}<em>{{ texte_millieu }}</em>{{ texte_droit }}</p>
+            <h2>Resultat:</h2>
+            <p>{% if erreur %} <em>Cet élement n'est pas dans le texte</em> {% else %} {{ texte_gauche }}<em>{{ texte_millieu }}</em>{{ texte_droit }} {% endif %}</p>
         </div>
+        {% endif %}
 
     </div>
 

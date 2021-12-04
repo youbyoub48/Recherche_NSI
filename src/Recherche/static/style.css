@@ -45,3 +45,19 @@ h1
     box-shadow: 20px 50px 100px rgba(0, 0, 0, .5) ;
     margin-top: 5em;
 }
+
+.rectangle_get
+{
+    background: linear-gradient(135deg, orange 60%, cyan 30%);
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    height: 350px;
+    box-shadow: 20px 50px 100px rgba(0, 0, 0, .5) ;
+    margin-top: 5em;
+}
+
+#erreur
+{
+    color: red;
+}

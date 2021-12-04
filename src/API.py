@@ -27,7 +27,11 @@ def boyer_moore_horspool(texte, motif,tDs):
                 positions.append(i)
                 i += 1
                 trouve=False
-    return positions[0]
+    try:
+        return positions[0]
+    
+    except:
+        return "False"
 
 if __name__ == "__main__" :
     texte = "ayoubbilaladam"
