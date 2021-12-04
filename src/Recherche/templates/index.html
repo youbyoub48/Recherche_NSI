@@ -9,16 +9,29 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h1>Recherche Boyer-Moore-Horspool</h1>
-    <form method="post">{% csrf_token %}
-        <textarea name="texte" id="" cols="30" rows="6"></textarea>
-        <input type="text" name="motif">
-        <button type="submit">Rechercher</button>
-    </form>
 
-    <h2>Mot Rechercher:</h2>
-    <p>{{ motif }}</p>
-    <h2>Texte:</h2>
-    <p>{{ texte_gauche }}<em>{{ texte_millieu }}</em>{{ texte_droit }}</p>
+    <header>
+        <h1>Recherche Boyer-Moore-Horspool</h1>
+    </header>
+
+    <div class="rectangle">
+
+        <div class="formulaire">
+            <form method="post">{% csrf_token %}
+                <textarea name="texte" id="" cols="30" rows="6" placeholder="écrivez votre texte ici" required></textarea>
+                <input type="text" name="motif" placeholder="mot rechercher" required>
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+
+        <div class="resultat">
+            <h2>Mot Rechercher:</h2>
+            <p>{{ motif }}</p>
+            <h2>Texte:</h2>
+            <p>{{ texte_gauche }}<em>{{ texte_millieu }}</em>{{ texte_droit }}</p>
+        </div>
+
+    </div>
+
 </body>
 </html>
